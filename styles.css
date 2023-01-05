@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Caramel&family=Poppins:wght@300&family=Roboto+Slab&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body{
+    --link-load-interval:300ms;
+    --text-load-interval:300ms;
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(127, 127, 241);
+}
+ul{
+    list-style-type: none;
+}
+ul li a{
+    text-decoration: none;
+    color: black
+}
+
+nav ul{
+
+    font-size: 1.3em;
+    text-align: end;
+}
+nav ul li{
+    display: inline-block;
+    padding: 0.5em;
+    margin: 0 20px;
+    animation-name: link-load;
+    animation-duration: var(--link-load-interval);
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    animation-delay: 0.2s;
+    transform: translateY(-100%);
+}
+nav ul li:nth-child(2){
+    animation-delay: calc(var(--link-load-interval)*2);
+}
+nav ul li:nth-child(3){
+    animation-delay: calc(var(--link-load-interval)*3);
+}
+nav ul li:nth-child(4){
+    opacity: 0;
+    transform: translate(0);
+    animation-name: resume-btn-load;
+    animation-delay: calc(var(--link-load-interval)*4);
+}
+nav ul li button{
+    font-size: 0.8em;
+    padding: 0.2em;
+    border-radius: 4px;
+}
+
+.left-sidebar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 10%;
+    z-index: -1;
+    justify-content: center;
+    opacity: 0;
+    animation: side-bar-load 0.5s ease-out calc(var(--link-load-interval) * 4 + var(--text-load-interval) + 500ms) forwards;
+   
+    
+   
+}
+.right-sidebar{
+   
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   writing-mode: vertical-lr;
+   text-orientation:sideways;
+   width: 10%;
+   position: fixed;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   z-index: -1;
+   opacity: 0;
+   animation: side-bar-load 0.5s ease-out calc(var(--link-load-interval) * 4 + var(--text-load-interval) + 500ms) forwards;
+  
+}
+
+article{
+    max-width: 80%;
+    margin: 20px auto;
+    padding: 10px;
+}
+.intro p{
+    font-size: 1.3em;
+}
+.intro h2{
+    font-size: 3.5em;
+    font-weight:bolder;
+    color: white;
+
+}
+.text-content{
+    opacity: 0;
+    transform: translateY(20px);
+    animation-name: text-load;
+    animation-duration: var(--text-load-interval);
+    animation-timing-function: ease-out;
+    animation-delay: calc(var(--link-load-interval)*5);
+    animation-fill-mode: forwards;
+}
+.showContent{
+    opacity: 0;
+    transform: translateY(20px);
+    animation: text-load var(--text-load-interval) ease-out calc(var(--link-load-interval)*1.5) forwards;
+}
+
+
+
+section.hiddenContent{
+    margin: 100px auto;
+    max-width: 80%;
+    padding: 0 200px;
+}
+section.hiddenContent.first{
+    margin-top: 400px;
+}
+
+
+
+
+/* animation */
+@keyframes link-load {
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+@keyframes text-load {
+    0%{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes side-bar-load {
+    0%{
+        opacity: 0;
+        transform: scale(0);
+    }
+    
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes resume-btn-load {
+    0%{
+        opacity: 0;
+        transform: scale(0);
+    }
+    90%{
+        transform: scale(1.1);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}

@@ -10,6 +10,7 @@ html {
 body{
     --link-load-interval:300ms;
     --text-load-interval:300ms;
+    --text-load-delay:1000ms;
     font-family: 'Poppins', sans-serif;
     background-color: rgb(127, 127, 241);
 }
@@ -96,42 +97,46 @@ article{
     margin: 20px auto;
     padding: 10px;
 }
-.intro p{
+.intro-text p{
     font-size: 1.3em;
 }
-.intro h2{
+.intro-text h2{
     font-size: 3.5em;
     font-weight:bolder;
     color: white;
 
 }
-.text-content{
+.intro-text{
     opacity: 0;
     transform: translateY(20px);
-    animation-name: text-load;
+    animation-name: content-load;
     animation-duration: var(--text-load-interval);
     animation-timing-function: ease-out;
     animation-delay: calc(var(--link-load-interval)*5);
     animation-fill-mode: forwards;
 }
-.showContent{
+.show-content{
     opacity: 0;
-    transform: translateY(20px);
-    animation: text-load var(--text-load-interval) ease-out calc(var(--link-load-interval)*1.5) forwards;
+    transform: translateY(40px);
+    animation: content-load var(--text-load-delay) ease-out calc(var(--link-load-interval)*1.5) forwards;
+}
+
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.card{
+    width: 300px;
+    height: 200px;
+    background-color: gray;
+    border-radius: 10px;
+    margin: 10px;
 }
 
 
-/* 
-section.hiddenContent{
-    margin: 100px auto;
-    max-width: 80%;
-    padding: 0 200px;
+.demo{
+   margin-top: 250px;
 }
-section.hiddenContent.first{
-    margin-top: 400px;
-} */
-
-
 
 
 /* animation */
@@ -143,10 +148,13 @@ section.hiddenContent.first{
         transform: translateY(0);
     }
 }
-@keyframes text-load {
+@keyframes content-load {
     0%{
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(40px);
+    }
+    30%{
+        opacity:0.9;
     }
     100%{
         opacity: 1;

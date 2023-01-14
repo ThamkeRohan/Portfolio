@@ -10,7 +10,7 @@ html {
 body{
     --link-load-interval:300ms;
     --text-load-interval:300ms;
-    --text-load-delay:1000ms;
+    --text-load-delay:600ms;
     font-family: 'Poppins', sans-serif;
     background-color: rgb(127, 127, 241);
 }
@@ -118,7 +118,7 @@ article{
 .show-content{
     opacity: 0;
     transform: translateY(40px);
-    animation: content-load var(--text-load-delay) ease-out calc(var(--link-load-interval)*1.5) forwards;
+    animation: content-load var(--text-load-interval) ease-out calc(var(--text-load-delay)) forwards;
 }
 
 .card-container{
@@ -153,7 +153,7 @@ article{
         opacity: 0;
         transform: translateY(40px);
     }
-    30%{
+    60%{
         opacity:0.9;
     }
     100%{
